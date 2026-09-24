@@ -71,6 +71,8 @@
 
 ## 二、真机验证（必须做的三步，代码这边已完成，装不上/没生效一定先过这三步）
 
+> **不想自己编译**：直接到 [Releases](https://github.com/kiraconnaughtonzp-eng/InputMethodBarEnhance/releases) 下载 `app-release.apk`（110KB，已签名）安装即可。
+
 1. **装 APK**：`adb install -r app\build\outputs\apk\debug\app-debug.apk`（或 Android Studio 直接 Run）
    - 想要更小的包就用 release：`adb install -r app\build\outputs\apk\release\app-release.apk`（**110KB**，已签名，可直接覆盖已装的 debug 包）
    - release 默认**复用 debug 签名**（`app/build.gradle.kts` 里 `signingConfig = signingConfigs.getByName("debug")`）——
