@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 设置界面固定深色风格：不依赖 AppCompat / Compose，任何机器都能直接编译 -->
+    <style name="Theme.LsposedKit" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/kit_bg</item>
+        <item name="android:colorBackground">@color/kit_bg</item>
+        <item name="android:statusBarColor">@color/kit_bg</item>
+        <item name="android:navigationBarColor">@color/kit_bg</item>
+        <item name="android:textColorPrimary">@color/kit_text</item>
+        <item name="android:textColorSecondary">@color/kit_text_dim</item>
+        <item name="android:colorAccent">@color/kit_accent</item>
+    </style>
+
+</resources>

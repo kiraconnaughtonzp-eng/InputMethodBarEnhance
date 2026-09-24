@@ -1,0 +1,27 @@
+# ============================================================================
+# Xposed / LSPosed 模块的 R8 保留规则
+#
+# release 构建打开了 isMinifyEnabled（裁剪没用到的代码，主要是 Kotlin 标准库），
+# 但用 -dontobfuscate **保持类名不变** —— 模块靠类名/包名工作：
+#   · assets/xposed_init 里写的是入口类全限定名（字符串，R8 看不到引用）
+#   · ContentProvider 的 authority、日志前缀、设置 key 都与包名相关
+#   · 排障时要在日志里看到真实类名
+# ============================================================================
+
+# 保持类名不被混淆
+-dontobfuscate
+
+# LSPosed 通过 assets/xposed_init 里的字符串加载入口类
+-keep class com.wetype.enhance.XposedEntry { *; }
+
+# 钩子回调的覆写方法由 Xposed 框架调用（保留以防被裁剪/合并）
+-keepclassmembers class * extends de.robv.android.xposed.XC_MethodHook {
+    protected void beforeHookedMethod(...);
+    protected void afterHookedMethod(...);
+}
+
+# 保留注解与泛型签名
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
+
+# 保留 Kotlin 元数据（enum 相关，代价很小）
+-keep class kotlin.Metadata { *; }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        ★ 作用域：模块默认勾选的 App 列表（LSPosed 里也可以手动勾选其它输入法）。
+        本模块的钩子只用了 framework 的 InputMethodService，所以**任何输入法都能用** ——
+        想支持别的输入法：把它的包名加到这里 + 加进 ModuleScope.TARGET_PACKAGES 即可。
+    -->
+    <string-array name="xposedscope" translatable="false">
+        <item>com.tencent.wetype</item>
+        <item>com.sohu.inputmethod.sogou</item>
+        <item>com.sohu.inputmethod.sogou.xiaomi</item>
+        <item>com.baidu.input</item>
+        <item>com.baidu.input_mi</item>
+        <item>com.iflytek.inputmethod</item>
+        <item>com.google.android.inputmethod.latin</item>
+        <item>com.android.inputmethod.latin</item>
+    </string-array>
+</resources>

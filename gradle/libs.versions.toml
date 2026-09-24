@@ -1,0 +1,6 @@
+[versions]
+# AGP 9.x：使用 9.3.1（与本机 Gradle 缓存 / Android Studio 2026.1 匹配，可离线构建）
+agp = "9.3.1"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }

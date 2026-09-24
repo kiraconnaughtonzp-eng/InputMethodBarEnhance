@@ -1,0 +1,4 @@
+<resources>
+    <!-- 模块名：不绑定某个输入法，所以用通用名（想改回"微信输入法增强"改这一行即可） -->
+    <string name="app_name">输入法底栏增强</string>
+</resources>

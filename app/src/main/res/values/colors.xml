@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kit_bg">#FF0E1014</color>
+    <color name="kit_card">#FF171A21</color>
+    <color name="kit_stroke">#1FFFFFFF</color>
+    <color name="kit_text">#FFECEDEF</color>
+    <color name="kit_text_dim">#FF9AA0A6</color>
+    <color name="kit_accent">#FF4C8DFF</color>
+</resources>

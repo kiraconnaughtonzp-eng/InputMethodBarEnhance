@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LsposedKit"
+        tools:ignore="MissingApplicationIcon">
+
+        <!-- 模块设置界面（也是桌面入口），由框架的声明式设置项自动生成 -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LsposedKit"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            跨进程配置 / 诊断通道：
+            目标 App 进程（另一个 UID）通过它读取配置、回写心跳 / 日志 / 命令结果。
+            只存 UI 偏好与诊断文本；调用方是别人的 UID，无法用签名级权限约束，因此只能 exported。
+            authority 由 applicationId 派生（见 app/build.gradle.kts 的 manifestPlaceholders）。
+        -->
+        <provider
+            android:name=".config.ConfigProvider"
+            android:authorities="${configAuthority}"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="false"
+            tools:ignore="ExportedContentProvider" />
+
+        <!-- ==================== LSPosed / Xposed 模块声明 ==================== -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <!-- ★ 模块说明：会显示在 LSPosed 模块列表里 -->
+        <meta-data
+            android:name="xposeddescription"
+            android:value="给输入法底栏加一排快捷按钮：全选 / 复制 / 剪切 / 粘贴 / 光标移动 / 行首行尾 / 撤销重做 / 收起键盘。适用于微信输入法、搜狗、百度、讯飞、Gboard 等任何输入法（在 LSPosed 作用域里勾选即可）。" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="82" />
+        <!-- ★ 作用域：见 res/values/arrays.xml -->
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposedscope" />
+    </application>
+
+</manifest>

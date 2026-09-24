@@ -1,0 +1,22 @@
+# 换行符 / 二进制文件规矩（避免 Windows 上提交、Linux 上跑不起来）
+# 仓库内统一存 LF；Windows 上需要 CRLF 的脚本按后缀单独指定。
+
+* text=auto eol=lf
+
+# Windows 脚本：检出时必须是 CRLF（gradlew.bat / .ps1 尤其 PS 5.1 兼容）
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Unix 脚本：绝不能是 CRLF，否则 Linux/macOS 上 exec 直接报 bad interpreter
+gradlew   text eol=lf
+*.sh      text eol=lf
+
+# 二进制：禁止任何换行转换
+*.jar     binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.webp    binary
+*.keystore binary
+*.jks     binary
